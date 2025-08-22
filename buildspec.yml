@@ -7,9 +7,9 @@ phases:
       # Check AWS CLI version
       - aws --version
       # Log in to Amazon ECR
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 025995114484.dkr.ecr.us-east-1.amazonaws.com
+      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/u1i2o1e6
       # Define repository URI and image tag
-      - REPOSITORY_URI=025995114484.dkr.ecr.us-east-1.amazonaws.com/aws-springboot
+      - REPOSITORY_URI=public.ecr.aws/u1i2o1e6/spring-boot-application-deployment
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
     commands:
